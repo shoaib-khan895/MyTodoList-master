@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
 
       return {
         ...state,
-        todo_list: [todo_list.splice(id, text)],
+        todo_list: [state.todo_list.splice(id, text)],
       };
     }
     default:
