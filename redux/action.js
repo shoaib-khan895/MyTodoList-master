@@ -1,4 +1,8 @@
-import {ADD_TODO, DELETE_TODO,UPDATE_TODO} from '../src/components/actionTypes';
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  UPDATE_TODO,
+} from '../src/components/actionTypes';
 
 let nextTodoId = 0;
 
@@ -17,9 +21,10 @@ export const deleteTodo = id => ({
   },
 });
 
-export const updateTodo = id => ({
+export const updateTodo = (id,text) => ({
   type: UPDATE_TODO,
   payload: {
     id,
+    text,
   },
 });

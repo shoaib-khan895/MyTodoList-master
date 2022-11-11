@@ -134,6 +134,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = {addTodo, deleteTodo};
+const mapDispatchToProps = {addTodo, deleteTodo,updateTodo};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoMain);

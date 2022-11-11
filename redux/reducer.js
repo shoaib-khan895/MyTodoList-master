@@ -1,4 +1,8 @@
-import {ADD_TODO, DELETE_TODO} from '../src/components/actionTypes';
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  UPDATE_TODO,
+} from '../src/components/actionTypes';
 
 const initialState = {
   todo_list: [],
@@ -20,13 +24,15 @@ export default function (state = initialState, action) {
         todo_list: state.todo_list.filter(todo => todo.id != id),
       };
     }
-    case DELETE_TODO: {
-      const {id, task} = action.payload;
+    case UPDATE_TODO: {
+      const {id, text} = action.payload;
+      
+      const newText = todo_list.splice(id, text);
+      console.log(newText);
 
-      const index = state.todo_list.filter(todo => todo.id != id);
       return {
         ...state,
-        todo_list: [...state.todo_list, {index, task}],
+        todo_list: [todo_list.splice(id, text)],
       };
     }
     default:
