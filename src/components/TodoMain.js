@@ -13,7 +13,7 @@ import {addTodo, deleteTodo, updateTodo} from '../../redux/action';
 import {connect} from 'react-redux';
 import TodoUpdate from './TodoUpdate';
 
-function TodoMain({todo_list, addTodo, deleteTodo,navigation}){
+function TodoMain({todo_list, addTodo, deleteTodo, navigation}) {
   const [task, setTask] = React.useState('');
 
   const handleAddTodo = () => {
@@ -23,14 +23,14 @@ function TodoMain({todo_list, addTodo, deleteTodo,navigation}){
   const handleDeleteTodo = id => {
     deleteTodo(id);
   };
-  const handleUpdateTodo = id => {
-    updateTodo(id);
-    nav()
-  };
-
-  function nav(){
-    
-    navigation.navigate('TodoUpdate')
+  // const handleUpdateTodo = id => {
+  //   updateTodo(id);
+  //   navToUpdateScreen(id);
+  // };
+  function navToUpdateScreen(id) {
+    navigation.navigate('TodoUpdate', {
+      id: id,
+    });
   }
   return (
     <View>
@@ -54,7 +54,7 @@ function TodoMain({todo_list, addTodo, deleteTodo,navigation}){
           renderItem={({item, index}) => {
             return (
               <TouchableOpacity
-                onLongPress={() => handleUpdateTodo(item.id)}
+                onLongPress={() => navToUpdateScreen(item.id)}
                 onPress={() => handleDeleteTodo(item.id)}>
                 <View style={{flexDirection: 'row'}}>
                   <View style={styles.item}>
@@ -75,7 +75,7 @@ function TodoMain({todo_list, addTodo, deleteTodo,navigation}){
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   hearderTextSttle: {
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: 'black',
     backgroundColor: 'white',
+    width:'100%'
   },
   delete: {
     fontSize: 24,

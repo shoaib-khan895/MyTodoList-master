@@ -21,12 +21,12 @@ export default function (state = initialState, action) {
       };
     }
     case DELETE_TODO: {
-      const index = state.todo_list.findIndex(todo => todo.id !== action.payload); 
-      const newArray = [...state.todo_list]; 
-      newArray[index].completed = true;
+      const {id, task} = action.payload;
+
+      const index = state.todo_list.filter(todo => todo.id != id);
       return {
-        ...state, 
-        todos: newArray, 
+        ...state,
+        todo_list: [...state.todo_list, {index, task}],
       };
     }
     default:
