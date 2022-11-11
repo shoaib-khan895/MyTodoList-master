@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: 'black',
     backgroundColor: 'white',
-    width:'100%'
+    width: '100%',
   },
   delete: {
     fontSize: 24,
@@ -134,6 +134,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = {addTodo, deleteTodo,updateTodo};
+const mapDispatchToProps = {addTodo, deleteTodo, updateTodo};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoMain);
